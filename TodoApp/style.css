@@ -1,0 +1,55 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+}
+h1{
+    text-align: center;
+}
+#out{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+#form{
+    border-radius: 3px;
+    width: 300px;
+    height: 200px;
+    background-color: darkgray;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#btn button{
+    padding: 5px;
+    width: 5em;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+}
+input{
+    outline: none;
+    height: 2em;
+    width: 15em;
+}
+#msg{
+    color: red;
+    /* padding: 18px; */
+    visibility: hidden;
+}
+#users{
+    padding: 15px;
+}
+#users li{
+    list-style: none;
+    text-decoration: none;
+    background-color: burlywood;
+    color: white;
+    padding: 5px;
+    border: 2px solid white;
+}
