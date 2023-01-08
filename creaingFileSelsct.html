@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>file selection dialog from the file explrorer</title>
+</head>
+<body>
+    <script>
+    //this is the way of creating the file dialog box in javascript.it uses vanila javascript and there is another way using react js
+    var fileSelector=document.createElement('input');
+    fileSelector.setAttribute('type','file')
+    var selectDialogLink=document.createElement('a');
+    selectDialogLink.setAttribute('href','')
+    selectDialogLink.innerHTML="select file"
+    selectDialogLink.onclick=function(){
+        fileSelector.click()
+        return false
+    }
+    document.body.appendChild(selectDialogLink);
+    </script>
+</body>
+</html>

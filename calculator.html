@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+        height: 100vh;
+        display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #container{
+            border: 2px solid black;
+            width: 400px;
+            }
+            h3{
+                padding: 10px;
+                font-size: 25px;
+                text-align: center;
+            }
+            input{
+                width: 340px;
+                height: 30px;
+                padding: 5px;
+                border: 1px solid black;
+                outline: 0;
+                margin:5px auto 20px;
+                font-size: 20px;
+                font-weight: bold;
+            }
+            #main{
+                padding: 15px;
+                margin-left: auto;
+                
+            }
+            #bottons{
+                display: flex;
+            }
+            button{
+                padding: 20px;
+                margin: 10px;
+                font-size: 15px;
+            }
+            aside{
+                width: 250px;
+            }
+            #another{
+                display: flex;
+                flex-direction: column;
+            }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="main"> 
+            <h3>Max simple calculator</h3>
+            <input type="text" name="" id="show" placeholder="0"><br>
+            <div id="bottons">
+                <aside>
+                    <button id="7">7</button>
+                    <button id="8">8</button>
+                    <button id="9">9</button>
+                    <button id="4">4</button>
+                    <button id="5">5</button>
+                    <button id="6">6</button>
+                    <button id="1">1</button>
+                    <button id="2">2</button>
+                    <button id="3">3</button>
+                    <button id="0">0</button>
+                    <button id="add">+</button>
+                    <button id="substract">-</button>
+                </aside>
+                <div id="another">
+                    <button id="multiply">x</button>
+                    <button id="divide">/</button>
+                    <button id="clear">clear</button>
+                    <button id="equals">=</button></div>
+                </div>
+            </div>
+    </div>
+    <script>
+        let one=document.getElementById("1")
+        let two=document.getElementById("2")
+        let three=document.getElementById("3")
+        let four=document.getElementById("4")
+        let five=document.getElementById("5")
+        let six=document.getElementById("6")
+        let seven=document.getElementById("7")
+        let eight=document.getElementById("8")
+        let nine=document.getElementById("9")
+        let zero=document.getElementById("0")
+        let mult=document.getElementById("multiply")
+        let Add=document.getElementById("add")
+        let divide=document.getElementById("divide")
+        let clear=document.getElementById("clear")
+        let equals=document.getElementById("equals")
+        let substract=document.getElementById("substract")
+        //let point=document.getElementById("point")
+        let inputField=document.getElementById("show")
+        let result=0;
+        let divider=false;
+        let multiplier=false;
+        let Adder=false;
+        let Subtractor=false;
+        one.addEventListener("click",()=>{
+           let temp1=1;
+           inputField.value+=temp1
+        })
+        three.addEventListener("click",()=>{
+           let temp1=3;
+           inputField.value+=temp1
+        })
+        four.addEventListener("click",()=>{
+           let temp1=4;
+           inputField.value+=temp1
+        })
+        five.addEventListener("click",()=>{
+           let temp1=5;
+           inputField.value+=temp1
+        })
+        six.addEventListener("click",()=>{
+           let temp1=6;
+           inputField.value+=temp1
+        })
+        seven.addEventListener("click",()=>{
+           let temp1=7;
+           inputField.value+=temp1
+        })
+        eight.addEventListener("click",()=>{
+           let temp1=8;
+           inputField.value+=temp1
+        })
+        nine.addEventListener("click",()=>{
+           let temp1=9;
+           inputField.value+=temp1
+        })
+        zero.addEventListener("click",()=>{
+           let temp1=0;
+           inputField.value+=temp1
+        })
+        two.addEventListener("click",()=>{
+           let temp1=2;
+           inputField.value+=temp1
+        })
+        divide.addEventListener("click",()=>{
+            storedVal1=parseInt(inputField.value)
+            divider=true;
+            clearInputField()
+        })
+        mult.addEventListener("click",()=>{
+            storedVal1=parseInt(inputField.value)
+            multiplier=true
+            clearInputField()
+        })
+        substract.addEventListener("click",()=>{
+            storedVal1=parseInt(inputField.value)
+            Adder=true
+            clearInputField()
+        })
+        Add.addEventListener("click",()=>{
+            storedVal1=parseInt(inputField.value)
+            Subtractor=true
+            clearInputField()
+        })
+        let clearInputField=()=>{
+            inputField.value=""
+        }
+        equals.addEventListener("click",()=>{
+            storedVal2=parseInt(inputField.value)
+            if(divider===true){
+                inputField.value=storedVal1/storedVal2
+            }
+            else if(Adder===true){
+                inputField.value=storedVal1+storedVal2
+            }
+            else if(Subtractor===true){
+                inputField.value=storedVal1-storedVal2
+            }
+            else if(multiplier===true){
+                inputField.value=storedVal1*storedVal2
+            }
+            else{
+                inputField.value=fu
+            }
+        })
+        clear.addEventListener("click",()=>{
+            storedVal1=0;
+            storedVal2=0
+            clearInputField()
+        })
+    </script>
+</body>
+</html>
