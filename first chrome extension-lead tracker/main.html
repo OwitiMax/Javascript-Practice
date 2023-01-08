@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lead Tracker</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+            min-width:520px;
+            padding: 10px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        input{
+            width: 500px;
+            padding: 10px;
+            margin-bottom: 8px;
+            border: 1px solid #5f9341;
+            outline:none;
+            font: 15px;
+            font-weight:100;
+          }
+        button{
+            padding: 10px;
+            margin: 5px;
+            font-size: 14px;
+            background-color: #5f9341;
+            font-weight: bold;
+            border: 2px solid lightgreen;
+        }
+        ul{
+            padding: 8px;
+            margin: 5px;
+            list-style: none;
+        }
+        a{
+            display: flex;
+            flex-direction: column;
+            padding: 3px;
+            color: #5f9341;
+        }
+        li{
+            font-size: 13px;
+        }
+        #delete{
+            background-color: white;
+            color: #5f9341;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="Inputfield">
+    <input type="text" id="input_space"><br>
+    <button id="save_input">SAVE INPUT</button>
+    <button id="save_tab">SAVE TAB</button>
+    <button id="delete">DELETE ALL</button>
+    <ul id="unorderedList"></ul>
+    </div>
+    <script>
+    let myLeads=[];
+    const url=[{url:'www.youtube.com'}]
+    let savetab=document.querySelector("#save_tab")
+    savetab.addEventListener("click",()=>{
+        myLeads.push(url[0].url)
+        localStorage.setItem("leads",JSON.stringify(myLeads))
+        render(myLeads)
+        
+    })
+    let deletebut=document.querySelector("#delete")
+    let unorderedList=document.querySelector("#unorderedList")
+    const inputValue=document.querySelector("#input_space")
+    const placeholder=document.querySelector("#save_input")
+     let push=false
+     deletebut.addEventListener("dblclick",(del)=>{
+       localStorage.clear()
+       myLeads=[]
+       render(myLeads)
+
+     });
+        const render=(lead)=>{
+         if(inputValue.value){   
+        lead.push(inputValue.value)
+        localStorage.setItem("leads",JSON.stringify(lead))
+        let list=""
+       for(let i=0;i<lead.length;i++){
+            list+=`<a href="${lead[i]}" target="blank">
+                <li id="each">${lead[i]}</li>
+                </a>`
+       }
+       unorderedList.innerHTML=list
+       inputValue.value=""
+    }
+}
+    let valuesFromLocalStorage=JSON.parse(localStorage.getItem("leads"));
+    if(valuesFromLocalStorage){
+        myLeads=valuesFromLocalStorage
+        render(myLeads)
+     }
+    placeholder.addEventListener('click',(e)=>{
+    render(myLeads)
+        });
+       console.log(valuesFromLocalStorage)
+    
+    </script>
+</body>
+</html>

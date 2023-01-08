@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>black jack game</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        #main{
+          height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+           
+            }
+        #content{
+            width: 400px;
+            height: 350px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            border: 2px solid black;
+            background-color: chartreuse;
+
+        }
+        h1{
+            padding: 10px;
+            color: darkgoldenrod;
+        }
+        p{
+            padding: 15px;
+            font-size: 18px;
+            color: white;
+        }
+        button{
+            padding: 5px;
+            color: goldenrod;
+            font-size: 15px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <div id="content">
+            <h1>Blackjack </h1>
+            <p id="changing">Want to play a round?</p>
+            <p id="changing3">Cards:</p>
+            <p id="changing2">Sum: </p>
+<button onclick="Startgame()">Start Game</button>
+<button onclick="Newcard()">New Card</button>
+<p id="player"></p>
+        </div>
+    </div>
+    <script>
+const getrand=()=>{
+var numb=Math.floor(Math.random()*((11-2)+1)+2);
+if(numb>10){
+    return 10
+}
+else if(numb===1){
+    return 11
+}
+else{
+    return numb
+}
+}
+let personsinfo={
+    name:"Maxwell",
+    chips:145
+}
+let x=document.getElementById("changing")
+let card=document.getElementById("changing3")
+let summation=document.getElementById("changing2")
+let placeholder=document.querySelector("#player")
+let message="";
+let cards=[];
+let sum=0;
+let isAlive=false;
+let hasWon=false;
+placeholder.textContent=`${personsinfo.name} : $${personsinfo.chips}`
+function Startgame(){
+isAlive=true
+let firstcard=getrand();
+let secondcard=getrand();
+cards=[firstcard,secondcard]
+sum=firstcard+secondcard;
+
+    renderGame()
+}
+const renderGame=()=>{
+   if(sum<20){
+        hasWon=false;
+        message="Want to pick another card?"
+        summation.textContent=`Sum: ${sum}`
+        card.textContent='Cards:'
+        for(let i=0;i<cards.length;i++){
+            card.textContent+=cards[i]+" "
+        }
+x.textContent=message
+    }
+    else if(sum===20){
+        isAlive=false;
+        summation.textContent=`Sum: ${sum}`
+        card.textContent='Cards:'
+        for(let i=0;i<cards.length;i++){
+            card.textContent+=cards[i]+" "
+        }
+        message="you won"
+       x.textContent=message
+    }
+    else{
+    isAlive=false  
+    summation.textContent=`Sum: ${sum}`
+    card.textContent='Cards:'
+    for(let i=0;i<cards.length;i++){
+            card.textContent+=cards[i]+" "
+        }   
+    message="You are out of the game "
+    x.textContent=message
+    }
+}
+const Newcard=()=>{
+   if(isAlive===true&&hasWon===false){
+    let thirdcard=getrand();
+    sum+=thirdcard
+    cards.push(thirdcard)
+    renderGame()
+    }
+}
+    </script>
+</body>
+</html>

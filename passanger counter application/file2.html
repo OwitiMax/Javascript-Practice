@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+ <script>
+  let people=[
+    {
+        name:"Ashley",
+         age :"25",
+         gender:"female"
+    },
+    {
+        name:"Jacob",
+         age :"20",
+         gender:"male"
+    },
+    {
+        name:"james",
+         age :"22",
+         gender:"male"
+    },
+    {
+        name:"john",
+         age :"28",
+         gender:"male"
+    },
+    {
+        name:"peter",
+         age :"19",
+         gender:"male"
+    }
+];
+function eligibility(jina){
+  for(let i=0;i < people.length;i++){
+    if(people[i].name===jina){
+        people[i].age>21 ||people[i].age===21?console.log(people[i].age):console.log(people[i].age)
+    }
+}
+
+}
+let firstcard=Math.floor(Math.random()*((11-2)+1)+1);
+let secondcard=Math.floor(Math.random()*((11-2)+1)+1);
+let sum=firstcard+secondcard;
+sum>21 ? console.log("You have lost, you are out of the game"):sum<20 ? console.log("do you want to draw new card"):console.log("You have won")
+eligibility("james")
+ </script>   
+</body>
+</html>

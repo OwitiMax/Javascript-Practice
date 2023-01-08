@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trsnsition+transform</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            flex-direction: column;
+        }
+        #tester{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            transition: width 2s,height 2s,transform 3s;
+        }
+        #tester:hover{
+            width: 300px;
+            height: 300px;
+            transform:rotate(180deg);
+        }
+        #anime{
+            margin: 20px;
+            width: 400px;
+            height: 400px;
+            border: 2px solid black;
+        }
+        #playing{
+            width: 100px;
+            height: 100px;
+            background-color: green;
+            position: relative;
+            animation-name: exchange;
+            animation-duration: 4s;
+            margin: 5px;
+            animation-delay: 3s;
+            /* animation-timing-function: linear; */
+            animation-iteration-count:2;
+            /* animation-play-state: running;*/
+            animation-direction: alternate-reverse; 
+        }
+        @keyframes exchange{
+            0%{
+                background-color: green;
+                left: 0px; top: 0px;
+            }
+            25%{
+                background-color: red;
+                left:275px
+                ; top: 0px;
+            }
+            50%{
+                background-color: blue;
+                left:275px
+                ; top:275px
+                ;
+            }
+            75%{
+                background-color: orange;
+                left: 0px; top:275px
+                ;
+
+            }
+            100%{
+                background-color: yellow;
+                left: 0px; top: 0px;
+            }
+
+        }
+        #container{
+            width: 300px;
+            height: 50px;
+            cursor: pointer;
+            animation:reduce 3s ease 1s 2;
+        }
+        @keyframes reduce{
+            0%{
+              width: 300px;
+              background-color: red;  
+            }
+            100%{
+                width: 0px;
+                background-color: red;
+            }
+        }
+        .createmenuicon1, .createmenuicon2, .createmenuicon3{
+            width: 35px;
+            height: 5px;
+            border:3px solid black;
+            margin: 2px 0;
+            transition: 0.4s;
+        }
+        #navbar{
+            position: relative;
+        }
+        #close{
+            font-size: 50px;
+            font-weight:bolder;
+            position: absolute;
+            z-index:2;
+        }
+    </style>
+</head>
+<body>
+   <!-- <div id="tester"></div> 
+   <div id="anime">
+      <div id="playing"></div>
+   </div>
+   <h1 id="container" title="Name">MAXWELLL</h1>
+   <div> -->
+    <div id="navbar">
+        <div class="createmenuicon1"></div>
+       <div class="createmenuicon2"></div>
+       <div class="createmenuicon3"></div>
+       </div>
+       <div id="close">&times;</div>
+   </div>
+   
+   <script>
+    function myfunction(x){
+        x.classList.toggle
+    }
+let sum=0;
+for(let i=1;i<=365;i++){
+    sum+=i
+}
+console.log(sum*3)
+
+   </script>
+</body>
+</html>

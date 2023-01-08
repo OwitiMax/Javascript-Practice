@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>passanger counting app</title>
+    <style>
+        *{
+            padding: 0;
+            margin:0;
+            box-sizing: border-box;
+        }
+        #home{
+            display: flex;
+            align-items: center;
+            justify-content:center;
+        }
+        #items{
+           margin: 100px;
+           padding: 50px;
+            border: 1.5px solid black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+        }
+        button{
+            padding: 10px;
+            margin: 10px;
+        }
+        h3,h1,h4{
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="home">
+        <div id="items">
+            <h3>PEOPLE COUNTED ARE:</h3>
+            <h1 id="number">0</h1>
+            <button type="submit"  onclick="incre()">Increase</button>
+            <button onclick="saver()">Save</button>
+            <button onclick="clear()">clear</button>
+            <h4 id="history">The records are:</h4>
+        </div>
+       </div>
+  <script>
+let x=document.getElementById("number")
+first=0;
+function incre(){
+first+=1;
+x.innerText=first
+}
+const saver=()=>{
+let hist=document.getElementById("history")
+hist.append(first+'-')
+}
+const clear=()=>{
+    let y=document.getElementById("number");
+    y.textContent=0;
+}
+</script>     
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal image</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-image: linear-gradient(blue,white);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        #logo{
+           width: 150px;
+           height: 150px; 
+           border-radius: 50%;
+           padding: 20px;
+        }
+        #logo:hover{
+            background-color: blue;
+            transition: 2s;
+        }
+        #container{
+            background-image: linear-gradient(blue,white);
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+       }
+        #image1{
+            width: 1000px;
+            height: 500px;
+            margin: auto;
+        }
+        
+    </style>
+</head>
+<body>
+    <img src="/images/img  (1).jpg" alt="" id="logo">
+    <div id="container">
+        <h1 id="title">Our Services</h1>
+        <span id="close">&times;</span>
+        <img src="/images/img  (2).jpg" alt="" id="image1">
+    </div>
+    <script>
+        let logo=document.querySelector("#logo")
+        logo.addEventListener("click",()=>{
+
+        })
+    </script>
+</body>
+</html>

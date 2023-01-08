@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant items</title>
+    <style>
+        #main{
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #container{
+             border: 2px solid lightcoral;
+            /* height: 700px; */
+             width: 500px; 
+            
+        }
+        #toppart{
+            padding: 15px;
+        }
+        #bottompart{
+            padding: 15px;
+        }
+        #controls{
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        button{
+            padding: 10px;
+            margin:5px;
+        }
+        h1,h3{
+            text-align: center;
+            padding: 5px;
+            margin: 0;
+        }
+        img{
+            width: 300px;
+            height: 150px;
+            padding: 0;
+        }
+        #imagespace{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+    </style>
+</head>
+<body>
+ <div id="main">
+    <div id="container">
+        <div id="toppart">
+            <h1 id="foodName"><span id="foodId"></span></h1>
+            <p id="foodInfo"><span id="foodInfoId"></span></p>
+            <div id="imagespace"></div>
+        </div>
+        <div id="bottompart">
+            <h3 id="hotelName"><span id="hotelId"></span></h3>
+            <p id="hotelInfo"><span id="hotelInfoId"></span></p>
+        </div>
+        <div id="controls">
+            <button id="previous">Previous</button>
+            <button id="random">Random</button>
+            <button id="next">Next</button>
+
+        </div>
+    </div>
+ </div> 
+ <script>
+    let foodName=document.querySelector("#foodName")
+    let foodInfo=document.querySelector("#foodInfo")
+    let imagespace=document.querySelector("#imagespace")
+    let hotelName=document.querySelector("#hotelName")
+    let hotelInfo=document.querySelector("#hotelInfo")
+    let previous=document.querySelector("#previous")
+    let random=document.querySelector("#random")
+    let next=document.querySelector("#next")
+    let hotelId=document.querySelector("#hotelId")
+    let foodId=document.querySelector("#foodId")
+    const setImage=(url)=>{
+        imagename=document.createElement('img')
+        imagename.src=url
+        return imagespace.appendChild(imagename)
+    }
+    const clearimg=()=>{
+        imagespace.removeChild(imagename)
+    }
+    foods=[
+        {
+            food:"ugali",
+            aboutfood:"One Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere corrupti voluptate, pariatur mollitia sit veniam tenetur! Rem debitis laborum animi distinctio",
+            foodimg:"/imges/img (1).jpg",
+            hotel:"Kakamega hotel",
+            aboutHotel:" One veritatis iure impedit eligendi sunt error libero porro incidunt, corrupti hic repellat assumenda consequatur ad aperiam? Pariatur voluptatum quia corporis iure animi dolorem rerum, repellat, voluptates architecto ratione porro reprehenderit officiis nobis nesciunt!",
+            hotelI:"one",
+            foodI:"one"
+    },
+    {
+            food:"fish",
+            aboutfood:"Two incidunt eveniet qui! Et doloremque sint laudantium maiores expedita quas blanditiis quasi assumenda, id alias, exercitationem corporis reprehenderit asperiores minus aperiam. Id et non expedita ipsa totam?",
+            foodimg:"/imges/img (2).jpg",
+            hotel:"Kisumu",
+            aboutHotel:"Two veritatis iure impedit eligendi sunt error libero porro incidunt, corrupti hic repellat assumenda consequatur ad aperiam? Pariatur voluptatum quia corporis iure animi dolorem rerum, repellat, voluptates architecto ratione porro reprehenderit officiis nobis nesciunt!",
+            hotelI:"two",
+            foodI:"two"
+    },
+    {
+            food:"omena",
+            aboutfood:" Three incidunt eveniet qui! Et doloremque sint laudantium maiores expedita quas blanditiis quasi assumenda, id alias, exercitationem corporis reprehenderit asperiores minus aperiam. Id et non expedita ipsa totam?",
+            foodimg:"/imges/img (3).jpg",
+            hotel:"Kondele",
+            aboutHotel:"Three veritatis iure impedit eligendi sunt error libero porro incidunt, corrupti hic repellat assumenda consequatur ad aperiam? Pariatur voluptatum quia corporis iure animi dolorem rerum, repellat, voluptates architecto ratione porro reprehenderit officiis nobis nesciunt!",
+            hotelI:"three",
+            foodI:"three"
+    },
+    {
+            food:"mrenda",
+            aboutfood:"Four incidunt eveniet qui! Et doloremque sint laudantium maiores expedita quas blanditiis quasi assumenda, id alias, exercitationem corporis reprehenderit asperiores minus aperiam. Id et non expedita ipsa totam?",
+            foodimg:"/imges/img (4).jpg",
+            hotel:"Alpha cafe",
+            aboutHotel:"Four veritatis iure impedit eligendi sunt error libero porro incidunt, corrupti hic repellat assumenda consequatur ad aperiam? Pariatur voluptatum quia corporis iure animi dolorem rerum, repellat, voluptates architecto ratione porro reprehenderit officiis nobis nesciunt!",
+            hotelI:"four",
+            foodI:"four"
+    },
+    {
+            food:"rice",
+            aboutfood:" Five incidunt eveniet qui! Et doloremque sint laudantium maiores expedita quas blanditiis quasi assumenda, id alias, exercitationem corporis reprehenderit asperiores minus aperiam. Id et non expedita ipsa totam?",
+            foodimg:"/imges/img (5).jpg",
+            hotel:"Kirinyaga road hotel",
+            aboutHotel:"Five veritatis iure impedit eligendi sunt error libero porro incidunt, corrupti hic repellat assumenda consequatur ad aperiam? Pariatur voluptatum quia corporis iure animi dolorem rerum, repellat, voluptates architecto ratione porro reprehenderit officiis nobis nesciunt!",
+            hotelI:"five",
+            foodI:"five"
+    },
+    {
+            food:"pilau",
+            aboutfood:" Six incidunt eveniet qui! Et doloremque sint laudantium maiores expedita quas blanditiis quasi assumenda, id alias, exercitationem corporis reprehenderit asperiores minus aperiam. Id et non expedita ipsa totam?",
+            foodimg:"/imges/img (6).jpg",
+            hotel:"Intercontinental hotel",
+            aboutHotel:" Sixveritatis iure impedit eligendi sunt error libero porro incidunt, corrupti hic repellat assumenda consequatur ad aperiam? Pariatur voluptatum quia corporis iure animi dolorem rerum, repellat, voluptates architecto ratione porro reprehenderit officiis nobis nesciunt!",
+            hotelI:"six",
+            foodI:"six"
+    }
+    ]
+    //generation of a random number
+   
+   //calling the randBut( function)
+   random.addEventListener("click",()=>{
+   let rand=Math.floor(Math.random()*(foods.length))
+   clearimg()
+    randBut(rand)
+   })
+    //random button
+    const randBut=(rand)=>{
+    foodName.textContent=foods[rand].food+" "+foods[rand].foodI
+    foodInfo.textContent=foods[rand].aboutfood
+    setImage(foods[rand].foodimg)
+    hotelName.textContent=foods[rand].hotel+" "+foods[rand].hotelI
+    hotelInfo.textContent=foods[rand].aboutHotel
+   }
+    //setting the first values of the interface
+    foodName.textContent=foods[0].food+" "+foods[0].foodI
+    foodInfo.textContent=foods[0].aboutfood
+    setImage(foods[0].foodimg)
+    hotelName.textContent=foods[0].hotel+" "+foods[0].hotelI
+    hotelInfo.textContent=foods[0].aboutHotel
+    //defining index
+    index=1
+    next.addEventListener("click",()=>{
+    if(index<6){
+    clearimg()
+    nextBut()
+    index+=1
+    }
+})
+ //seting up the next button
+ const nextBut=()=>{
+    foodName.textContent=foods[index].food+" "+foods[index].foodI
+    foodInfo.textContent=foods[index].aboutfood
+    setImage(foods[index].foodimg)
+    hotelName.textContent=foods[index].hotel+" "+foods[index].hotelI
+    hotelInfo.textContent=foods[index].aboutHotel
+}
+//previous button
+previous.addEventListener("click",()=>{
+    if(index>0){
+        clearimg()
+        previousBut()
+        index-=1
+    }
+})
+const previousBut=()=>{
+    foodName.textContent=foods[index-1].food+" "+foods[index-1].foodI
+    foodInfo.textContent=foods[index-1].aboutfood
+    setImage(foods[index-1].foodimg)
+    hotelName.textContent=foods[index-1].hotel+" "+foods[index-1].hotelI
+    hotelInfo.textContent=foods[index-1].aboutHotel   
+}
+
+
+ </script>  
+</body>
+</html>
